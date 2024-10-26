@@ -1,0 +1,3 @@
+D:\Algoritmos\Semana 11\GameJam\GameJam\x64\Debug\GameJam.vcxproj.AssemblyReference.cache
+D:\Algoritmos\Semana 11\GameJam\GameJam\x64\Debug\GameJam.MyForm.resources
+D:\Algoritmos\Semana 11\GameJam\GameJam\x64\Debug\GameJam.vcxproj.GenerateResource.cache
