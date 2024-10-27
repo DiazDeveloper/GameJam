@@ -158,10 +158,14 @@ void Carrera::detectarColision3()
 				{
 					if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle()) || carros[j]->getRectangle().IntersectsWith(carros[i]->getRectangle()))
 					{
-						Random r, r2; 
-						int posX = r.Next(0, 750); 
-						int posY = r2.Next(0, 550); 
-						carros.push_back(new CarroRojo(posX, posY)); 
+						if (carros.size() < 20)  // esta parte no puse en el video, pero agrego la condicion de que se creee uno nuevo solo 
+							                     // si hay menos de 20 xq caso contrario la pantalla se llena de carros rojos
+						{
+							Random r, r2;
+							int posX = r.Next(0, 750);
+							int posY = r2.Next(0, 550);
+							carros.push_back(new CarroRojo(posX, posY));
+						}
 					}
 				}
 			}

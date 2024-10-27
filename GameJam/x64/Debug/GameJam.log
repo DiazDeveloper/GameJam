@@ -1,4 +1,5 @@
-﻿  MyForm.cpp
+﻿  Carrera.cpp
+D:\Algoritmos\Semana 11\GameJam\GameJam\Carrera.cpp(56,67): warning C4244: 'argumento': conversión de 'float' a 'int'; posible pérdida de datos
   Carrera.obj : se encontró un módulo MSIL; vinculación incremental deshabilitada para MSIL; ejecutando vínculo completo
   GameJam.vcxproj -> D:\Algoritmos\Semana 11\GameJam\x64\Debug\GameJam.exe
   "pwsh.exe" no se reconoce como un comando interno o externo,
