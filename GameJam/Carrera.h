@@ -24,5 +24,9 @@ public:
 	void AcabarCarrera(Graphics^ canvas);
 	void GenerarCarro(int numero);
 	int GenerarNumeroRandom(); 
+	void detectarColision1();
+	void detectarColision2();
+	void detectarColision3();
+
 };
 

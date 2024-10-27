@@ -2,9 +2,10 @@
 
 Carrera::Carrera()
 {
-	carros.push_back(new CarroRojo(15,90));
-	carros.push_back(new CarroAzul(15,280));
-	carros.push_back(new CarroVerde(15,470));
+	carros.push_back(new CarroRojo(15,90));     //
+	carros.push_back(new CarroVerde(15, 470)); //
+	carros.push_back(new CarroAzul(15,280));    //
+    	  
 }
 
 Carrera::~Carrera()
@@ -14,13 +15,14 @@ Carrera::~Carrera()
 		delete carros[i];
 	}
 	carros.clear();
+	
 }
 
 void Carrera::moverCarrera(Graphics^ canvas)  
 {
 	for (int i = 0; i < carros.size(); i++)
 	{
-		carros[i]->MoverCarrera(canvas);   
+		carros[i]->MoverCarrera(canvas);  
 	}
 }
 
@@ -69,7 +71,7 @@ void Carrera::GenerarCarro(int numero)
 		if (numero == 1)
 		{
 			Random r, r2; 
-			int posX = r.Next(0, 850);
+			int posX = r.Next(0, 750);
 			int posY = r2.Next(0, 550);
 			carros.push_back(new CarroRojo(posX, posY));  
 		}
@@ -77,17 +79,18 @@ void Carrera::GenerarCarro(int numero)
 		else if (numero == 2)
 		{
 			Random r, r2;
-			int posX = r.Next(0, 850);
+			int posX = r.Next(0, 750);
 			int posY = r2.Next(0, 550);
-			carros.push_back(new CarroVerde(posX, posY));  
+			carros.push_back(new CarroVerde(posX, posY));   
 		}
 
 		else if (numero == 3)
 		{
 			Random r, r2;
-			int posX = r.Next(0, 850);
+			int posX = r.Next(0, 750);
 			int posY = r2.Next(0, 550); 
 			carros.push_back(new CarroAzul(posX, posY));   
+			
 		}
 	}
 }
@@ -99,5 +102,79 @@ int  Carrera::GenerarNumeroRandom()
 	numero = r.Next(1, 4); 
 	return numero;
 }
+
+void Carrera::detectarColision1()
+{
+	for (int i = 0; i < carros.size(); i++)
+	{
+		if (carros[i]->getTipo() == 3)  //carro azul
+		{
+			for (int j = 0; j < carros.size(); j++)
+			{
+				if (i != j && carros[j]->getTipo() == 2) 
+				{
+					if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle())) //choque con verde
+					{
+						delete carros[j]; // elmina verde
+						carros.erase(carros.begin() + j); 
+						j--;
+					}
+				}
+			}
+		}
+	}
+}
+
+void Carrera::detectarColision2()
+{
+	for (int i = 0; i < carros.size(); i++)
+	{
+		if (carros[i]->getTipo() == 3)
+		{
+			for (int j = 0; j < carros.size(); j++)
+			{
+				if (i != j && carros[j]->getTipo() == 1)
+				{
+					if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle())) 
+					{
+						carros[i]->SetNuevaDireccion();
+						carros[j]->SetNuevaDireccion();
+					}
+				}
+			}
+		}
+	}
+}
+
+void Carrera::detectarColision3()  
+{
+	for (int i = 0; i < carros.size(); i++)
+	{
+		if (carros[i]->getTipo() == 3)
+		{
+			for (int j = 0; j < carros.size(); j++)
+			{
+				if (i != j && carros[j]->getTipo() == 1)
+				{
+					if (carros[i]->getRectangle().IntersectsWith(carros[j]->getRectangle()) || carros[j]->getRectangle().IntersectsWith(carros[i]->getRectangle()))
+					{
+						Random r, r2; 
+						int posX = r.Next(0, 750); 
+						int posY = r2.Next(0, 550); 
+						carros.push_back(new CarroRojo(posX, posY)); 
+					}
+				}
+			}
+		}
+	}
+}
+
+/*
+COMO NO ENCONTRAMOS MODELOS DE CARROS DE LOS COLORES ESPECIFICACOS EN EL DOCUMENTO, USAMOS OTROS COLORES
+CARRO 1 -> ROJO
+CARRO 2 -> VERDE
+CARRO 3 -> AZUL
+
+*/
 
 

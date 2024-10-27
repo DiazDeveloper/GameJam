@@ -20,6 +20,7 @@ CarroPadre::CarroPadre(int x, int y, char* imagen)
 	this->y = y; 
 	this->imagen = new char[48];
 	cambiarImagen(imagen);
+
 }
 
 void CarroPadre::mostrar(Graphics^ canvas)
@@ -76,6 +77,17 @@ int CarroPadre::getAncho()
 bool CarroPadre::hayColision(CarroPadre* carropadre)
 {
 	return getRectangle().IntersectsWith(carropadre->getRectangle());
+}
+
+int CarroPadre::getTipo()
+{
+	return tipo;  
+}
+
+void CarroPadre::SetNuevaDireccion() 
+{
+	dx *= -1; 
+	dy *= -1; 
 }
 
 

@@ -1,12 +1,13 @@
 #include "CarroRojo.h"
 
-CarroRojo::CarroRojo(int x, int y) : CarroPadre(x, y, "modelosCarro/carroRojo.png")
+CarroRojo::CarroRojo(int x, int y) : CarroPadre(x, y, "modelosCarro/carroRojo.png")   
 {
 	int r, r2; 
 	r = GenerarNumeroRandom(); 
 	r2 = GenerarNumeroRandom(); 
 	dx = r; 
 	dy = r2;  
+	tipo = 1;
 }
 
 void CarroRojo::MoverCarrera(Graphics^ canvas)
@@ -35,4 +36,9 @@ int  CarroRojo::GenerarNumeroRandom()
 	int numero;
 	numero = r.Next(6, 21);
 	return numero;
+}
+
+int CarroRojo::getTipo()
+{
+	return tipo;   
 }

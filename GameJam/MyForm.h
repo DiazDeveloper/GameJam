@@ -77,7 +77,7 @@ namespace GameJam {
 			// 
 			// timer2
 			// 
-			this->timer2->Interval = 20000;
+			this->timer2->Interval = 2000;
 			this->timer2->Tick += gcnew System::EventHandler(this, &MyForm::timer2_Tick);
 			// 
 			// button1
@@ -132,7 +132,7 @@ namespace GameJam {
 	{
 
 		carrera->mostrar(canvas);
-		carrera->moverCarrera(canvas); 
+		carrera->moverCarrera(canvas);  
 		carrera->AcabarCarrera(canvas);
 
 	}
@@ -162,6 +162,9 @@ private: System::Void timer3_Tick(System::Object^ sender, System::EventArgs^ e)
     {
 	    carrera->mostrar(canvas); 
 	    carrera->moverDiagonal(canvas);
+		carrera->detectarColision1(); 
+		carrera->detectarColision2();
+		carrera->detectarColision3();  
     }
 };
 }

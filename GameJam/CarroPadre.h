@@ -13,6 +13,7 @@ protected:
 	int dx, dy;
 	int alto, ancho;
 	char* imagen;
+	int tipo;
 
 	void cambiarImagen(char* nombreDelArchivo);
 	virtual void dibujarImagen(Graphics^ canvas, Bitmap^ sprite, Rectangle zoom, Rectangle corte);
@@ -29,6 +30,8 @@ public:
 	int getAlto();
 	int getAncho();
 	bool hayColision(CarroPadre* carropadre);
+	int getTipo();
+	void SetNuevaDireccion();
 
 };
 
